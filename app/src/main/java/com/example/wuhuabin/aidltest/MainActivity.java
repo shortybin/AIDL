@@ -14,7 +14,7 @@ import android.widget.Button;
 public class MainActivity extends AppCompatActivity {
     private static final String TAG = "MainActivity";
 
-    private Button mBind,mShow;
+    private Button mBind,mShow,mBinderActivity;
     private IMyAidlInterface mInterface;
 
     @Override
@@ -39,6 +39,13 @@ public class MainActivity extends AppCompatActivity {
                 } catch (RemoteException e) {
                     e.printStackTrace();
                 }
+            }
+        });
+        mBinderActivity= (Button) findViewById(R.id.binder_activity);
+        mBinderActivity.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(MainActivity.this,BinderActivity.class));
             }
         });
     }

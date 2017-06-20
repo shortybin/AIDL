@@ -21,8 +21,16 @@
             android:name=".MyService"
             android:enabled="true"
             android:exported="true"
-            android:process=":test"
-            >
+            android:process=":test">
+        </service>
+
+        <activity android:name=".BinderActivity">
+        </activity>
+
+        <service
+            android:name=".BinderService"
+            android:enabled="true"
+            android:exported="true">
         </service>
     </application>
 
