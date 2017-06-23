@@ -1,4 +1,4 @@
-package com.example.wuhuabin.aidltest;
+package com.example.wuhuabin.aidltest.service;
 
 import android.app.Service;
 import android.content.Intent;
@@ -14,7 +14,7 @@ public class BinderService extends Service {
     }
 
     public class MyBinder extends Binder{
-        BinderService getServer(){
+        public BinderService getServer(){
             return BinderService.this;
         }
     }

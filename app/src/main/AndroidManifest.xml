@@ -9,7 +9,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".MainActivity">
+        <activity android:name=".activity.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
 
@@ -18,19 +18,30 @@
         </activity>
 
         <service
-            android:name=".MyService"
+            android:name=".service.MyService"
             android:enabled="true"
             android:exported="true"
             android:process=":test">
         </service>
 
-        <activity android:name=".BinderActivity">
+        <activity android:name=".activity.BinderActivity">
         </activity>
 
         <service
-            android:name=".BinderService"
+            android:name=".service.BinderService"
             android:enabled="true"
             android:exported="true">
+        </service>
+
+        <activity android:name=".activity.MessengerActivity">
+        </activity>
+
+        <service
+            android:name=".service.MessengerService"
+            android:enabled="true"
+            android:exported="true"
+            android:process=":messenger"
+            >
         </service>
     </application>
 

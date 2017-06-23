@@ -1,4 +1,4 @@
-package com.example.wuhuabin.aidltest;
+package com.example.wuhuabin.aidltest.activity;
 
 import android.content.ComponentName;
 import android.content.Intent;
@@ -9,6 +9,9 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
+
+import com.example.wuhuabin.aidltest.service.BinderService;
+import com.example.wuhuabin.aidltest.R;
 
 public class BinderActivity extends AppCompatActivity {
 
