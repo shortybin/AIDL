@@ -18,6 +18,8 @@ import com.example.wuhuabin.aidltest.Message;
 import com.example.wuhuabin.aidltest.R;
 import com.example.wuhuabin.aidltest.service.AIDLService;
 
+import java.util.List;
+
 public class AIDLActivity extends AppCompatActivity {
 
     private static final String TAG = "AIDLActivity";
@@ -25,7 +27,7 @@ public class AIDLActivity extends AppCompatActivity {
     private Button mBindService,mSendEvent;
     private ImageView mImageView;
     private boolean isBind;
-    private IAidlInterface mIMyAidlInterface;
+    private IAidlInterface mIAidlInterface;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,7 +43,7 @@ public class AIDLActivity extends AppCompatActivity {
                     @Override
                     public void onServiceConnected(ComponentName name, IBinder service) {
                         isBind=true;
-                        mIMyAidlInterface = IAidlInterface.Stub.asInterface(service);
+                        mIAidlInterface = IAidlInterface.Stub.asInterface(service);
                     }
 
                     @Override
@@ -58,10 +60,17 @@ public class AIDLActivity extends AppCompatActivity {
             public void onClick(View v) {
                 if (isBind){
                     try {
-                        Message message= mIMyAidlInterface.showMessage();
-                        Bitmap bitmap=mIMyAidlInterface.showBitmap();
-                        mImageView.setImageBitmap(bitmap);
-                        Log.d(TAG, "onServiceConnected: "+message.getName()+message.getId());
+                        Message message=new Message();
+                        message.setId(2000);
+                        message.setName("lisi");
+                        mIAidlInterface.sendMessage(message);
+                        //mImageView.setImageBitmap(bitmap);
+
+                        List<Message> message1 = mIAidlInterface.getMessage();
+                        for (int i = 0; i < message1.size(); i++) {
+                            Log.d(TAG, "onClick: "+message1.get(i).getId()+message1.get(i).getName());
+                        }
+                        //Log.d(TAG, "onServiceConnected: "+message.getName()+message.getId());
                     } catch (RemoteException e) {
                         e.printStackTrace();
                     }
