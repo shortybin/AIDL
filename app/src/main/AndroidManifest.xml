@@ -18,10 +18,10 @@
         </activity>
 
         <service
-            android:name=".service.MyService"
+            android:name=".service.AIDLService"
             android:enabled="true"
             android:exported="true"
-            android:process=":test">
+            android:process=":AIDL">
         </service>
 
         <activity android:name=".activity.BinderActivity">
@@ -40,9 +40,11 @@
             android:name=".service.MessengerService"
             android:enabled="true"
             android:exported="true"
-            android:process=":messenger"
-            >
+            android:process=":messenger">
         </service>
+
+        <activity android:name=".activity.AIDLActivity">
+        </activity>
     </application>
 
 </manifest>

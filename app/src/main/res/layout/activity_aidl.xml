@@ -1,31 +1,27 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical"
-    tools:context="com.example.wuhuabin.aidltest.activity.MainActivity">
+    android:layout_height="match_parent">
 
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="binder_activity"
-        android:id="@+id/binder_activity"
+        android:text="bind_service"
+        android:id="@+id/bind_service"
         />
 
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="messenger_activity"
-        android:id="@+id/messenger_activity"
+        android:text="send_event"
+        android:id="@+id/send_event"
         />
 
-    <Button
+    <ImageView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="aidl_activity"
-        android:id="@+id/aidl_activity"
+        android:id="@+id/bitmap"
         />
 
 </LinearLayout>
