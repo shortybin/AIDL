@@ -22,6 +22,11 @@ public class Message implements Parcelable {
         dest.writeString(this.name);
     }
 
+    public void readFromParcel(Parcel dest){
+        name=dest.readString();
+        id=dest.readInt();
+    }
+
     public int getId() {
         return id;
     }
