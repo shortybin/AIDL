@@ -28,4 +28,11 @@
         android:id="@+id/aidl_activity"
         />
 
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="aidl_call_activity"
+        android:id="@+id/aidi_call"
+        />
+
 </LinearLayout>

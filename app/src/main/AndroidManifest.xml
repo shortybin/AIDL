@@ -45,6 +45,16 @@
 
         <activity android:name=".activity.AIDLActivity">
         </activity>
+        <activity android:name=".activity.AIDLCallbackActivity">
+        </activity>
+
+        <service
+            android:name=".service.AidlCallbackService"
+            android:enabled="true"
+            android:exported="true"
+            android:process=":aidlcallback"
+            >
+        </service>
     </application>
 
 </manifest>

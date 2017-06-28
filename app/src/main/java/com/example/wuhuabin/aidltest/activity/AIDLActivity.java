@@ -3,7 +3,6 @@ package com.example.wuhuabin.aidltest.activity;
 import android.content.ComponentName;
 import android.content.Intent;
 import android.content.ServiceConnection;
-import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.os.IBinder;
 import android.os.RemoteException;
@@ -11,7 +10,6 @@ import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
-import android.widget.ImageView;
 
 import com.example.wuhuabin.aidltest.IAidlInterface;
 import com.example.wuhuabin.aidltest.Message;
@@ -25,7 +23,6 @@ public class AIDLActivity extends AppCompatActivity {
     private static final String TAG = "AIDLActivity";
 
     private Button mBindService,mSendEvent;
-    private ImageView mImageView;
     private boolean isBind;
     private IAidlInterface mIAidlInterface;
 
@@ -77,8 +74,5 @@ public class AIDLActivity extends AppCompatActivity {
                 }
             }
         });
-
-        mImageView= (ImageView) findViewById(R.id.bitmap);
-
     }
 }

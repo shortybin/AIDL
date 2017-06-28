@@ -11,7 +11,7 @@ import com.example.wuhuabin.aidltest.R;
 public class MainActivity extends AppCompatActivity {
     private static final String TAG = "MainActivity";
 
-    private Button mBinderActivity,mMessengerActivity,mAIDLActivity;
+    private Button mBinderActivity,mMessengerActivity,mAIDLActivity,mAIDLCall;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,6 +39,13 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(MainActivity.this,AIDLActivity.class));
+            }
+        });
+        mAIDLCall= (Button) findViewById(R.id.aidi_call);
+        mAIDLCall.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(MainActivity.this,AIDLCallbackActivity.class));
             }
         });
     }

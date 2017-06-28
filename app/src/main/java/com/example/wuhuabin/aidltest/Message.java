@@ -1,5 +1,6 @@
 package com.example.wuhuabin.aidltest;
 
+import android.graphics.Bitmap;
 import android.os.Parcel;
 import android.os.Parcelable;
 
@@ -10,6 +11,15 @@ import android.os.Parcelable;
 public class Message implements Parcelable {
     private int id;
     private String name;
+    private Bitmap mBitmap;
+
+    public Bitmap getBitmap() {
+        return mBitmap;
+    }
+
+    public void setBitmap(Bitmap bitmap) {
+        mBitmap = bitmap;
+    }
 
     @Override
     public int describeContents() {
