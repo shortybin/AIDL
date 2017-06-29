@@ -2,14 +2,12 @@ package com.example.wuhuabin.aidltest.service;
 
 import android.app.Service;
 import android.content.Intent;
-import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.IBinder;
 import android.os.RemoteCallbackList;
 import android.os.RemoteException;
 import android.util.Log;
 
-import com.bumptech.glide.Glide;
 import com.example.wuhuabin.aidltest.ICallbackAidlInterface;
 import com.example.wuhuabin.aidltest.IShowCallback;
 import com.example.wuhuabin.aidltest.Message;
@@ -35,7 +33,6 @@ public class AidlCallbackService extends Service {
         @Override
         public void regist(IShowCallback callback) throws RemoteException {
             mList.register(callback);
-            getBitmap();
         }
 
         @Override
@@ -45,14 +42,16 @@ public class AidlCallbackService extends Service {
 
         @Override
         public void getBitmap() throws RemoteException {
-            Message message=new Message();
-            Bitmap bitmap=BitmapFactory.decodeResource(getResources(), R.mipmap.ic_launcher_round);
-            Glide.with(getApplicationContext()).load("https://timgsa.baidu.com/timg?image&quality=80&size" +
-                    "=b9999_10000&sec=1498648274110&di=10eec2162029316" +
-                    "d403e16aab17fe02d&imgtype=0&src=http%3A%2F%2Fimg.mp.it" +
-                    "c.cn%2Fupload%2F20160829%2Fc6504f3c0f514517be1fd09e5281fcd0_th.jpg");
-            message.setBitmap(bitmap);
-            callback(message);
+            Log.d(TAG, "getBitmap: "+Thread.currentThread());
+            try {
+                Thread.sleep(7000);
+                Message message=new Message();
+                message.setName("1234");
+                message.setBitmap(BitmapFactory.decodeResource(getResources(), R.mipmap.ic_launcher_round));
+                callback(message);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
         }
     };
 

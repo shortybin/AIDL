@@ -13,6 +13,22 @@ public class Message implements Parcelable {
     private String name;
     private Bitmap mBitmap;
 
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
     public Bitmap getBitmap() {
         return mBitmap;
     }
@@ -30,39 +46,25 @@ public class Message implements Parcelable {
     public void writeToParcel(Parcel dest, int flags) {
         dest.writeInt(this.id);
         dest.writeString(this.name);
+        dest.writeParcelable(this.mBitmap, flags);
     }
 
     public void readFromParcel(Parcel dest){
         name=dest.readString();
         id=dest.readInt();
-    }
-
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
+        mBitmap=dest.readParcelable(Bitmap.class.getClassLoader());
     }
 
     public Message() {
-
     }
 
     protected Message(Parcel in) {
         this.id = in.readInt();
         this.name = in.readString();
+        this.mBitmap = in.readParcelable(Bitmap.class.getClassLoader());
     }
 
-    public static final Parcelable.Creator<Message> CREATOR = new Parcelable.Creator<Message>() {
+    public static final Creator<Message> CREATOR = new Creator<Message>() {
         @Override
         public Message createFromParcel(Parcel source) {
             return new Message(source);

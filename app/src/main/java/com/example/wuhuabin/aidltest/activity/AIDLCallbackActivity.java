@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.os.IBinder;
 import android.os.RemoteException;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -18,6 +19,8 @@ import com.example.wuhuabin.aidltest.R;
 import com.example.wuhuabin.aidltest.service.AidlCallbackService;
 
 public class AIDLCallbackActivity extends AppCompatActivity implements View.OnClickListener{
+
+    private static final String TAG = "AIDLCallbackActivity";
 
     private Button mBind;
     private Button mSend;
@@ -49,7 +52,7 @@ public class AIDLCallbackActivity extends AppCompatActivity implements View.OnCl
                         @Override
                         public void run() {
                             try {
-                                mICallbackAidlInterface.regist(mStub);
+                                mICallbackAidlInterface.getBitmap();
                             } catch (RemoteException e) {
                                 e.printStackTrace();
                             }
@@ -65,6 +68,11 @@ public class AIDLCallbackActivity extends AppCompatActivity implements View.OnCl
         public void onServiceConnected(ComponentName name, IBinder service) {
             mICallbackAidlInterface = ICallbackAidlInterface.Stub.asInterface(service);
             isBind=true;
+            try {
+                mICallbackAidlInterface.regist(mStub);
+            } catch (RemoteException e) {
+                e.printStackTrace();
+            }
         }
 
         @Override
@@ -81,12 +89,16 @@ public class AIDLCallbackActivity extends AppCompatActivity implements View.OnCl
     IShowCallback.Stub mStub=new IShowCallback.Stub() {
         @Override
         public void showImage(final Message message) throws RemoteException {
+            Log.d(TAG, "showImage: "+Thread.currentThread().getId());
             runOnUiThread(new Runnable() {
                 @Override
                 public void run() {
+                    Log.d(TAG, "showImage: "+Thread.currentThread());
                     mImageView.setImageBitmap(message.getBitmap());
+                    Log.d(TAG, "showImage: "+message.getName());
                 }
             });
+
         }
     };
 
