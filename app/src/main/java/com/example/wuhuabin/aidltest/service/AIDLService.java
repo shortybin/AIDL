@@ -25,27 +25,26 @@ public class AIDLService extends Service {
     @Override
     public void onCreate() {
         super.onCreate();
-        mMessageList=new ArrayList<>();
-        Message message=new Message();
+        mMessageList = new ArrayList<>();
+        Message message = new Message();
         message.setId(1000);
         message.setName("zhangsan");
         mMessageList.add(message);
     }
 
-    IAidlInterface.Stub mStub=new IAidlInterface.Stub() {
+    IAidlInterface.Stub mStub = new IAidlInterface.Stub() {
         @Override
         public void sendMessage(Message message) throws RemoteException {
-            message.setId(3000);
             mMessageList.add(message);
             for (int i = 0; i < mMessageList.size(); i++) {
-                Log.d(TAG, "sendMessage: "+mMessageList.get(i).getId()+mMessageList.get(i).getName());
+                Log.d(TAG, "sendMessage: " + mMessageList.get(i).getId() + mMessageList.get(i).getName());
             }
         }
 
         @Override
         public List<Message> getMessage() throws RemoteException {
             for (int i = 0; i < mMessageList.size(); i++) {
-                Log.d(TAG, "sendMessage: "+mMessageList.get(i).getId()+mMessageList.get(i).getName());
+                Log.d(TAG, "sendMessage: " + mMessageList.get(i).getId() + mMessageList.get(i).getName());
             }
             return mMessageList;
         }

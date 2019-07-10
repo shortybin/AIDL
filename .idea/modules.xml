@@ -2,7 +2,6 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/AIDL.iml" filepath="$PROJECT_DIR$/AIDL.iml" />
       <module fileurl="file://$PROJECT_DIR$/AIDLtest.iml" filepath="$PROJECT_DIR$/AIDLtest.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
     </modules>
